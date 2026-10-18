@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api:*)"
+    ]
+  },
+  "model": "sonnet",
+  "remoteControlAtStartup": true,
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Bash(npm run test:coverage)",
+      "Bash(npx supabase gen types typescript:*)",
+      "Bash(gh api:*)"
+    ]
+  }
+}

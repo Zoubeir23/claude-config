@@ -1,0 +1,18 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "/Users/zoubeir/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-10-18T20:07:18.993Z"
+  },
+  "sentry-plugin-marketplace": {
+    "source": {
+      "source": "github",
+      "repo": "getsentry/sentry-for-claude"
+    },
+    "installLocation": "/Users/zoubeir/.claude/plugins/marketplaces/sentry-plugin-marketplace",
+    "lastUpdated": "2026-05-31T20:37:36.321Z"
+  }
+}

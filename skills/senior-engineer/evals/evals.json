@@ -1,0 +1,23 @@
+{
+  "skill_name": "senior-engineer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My Express API is returning 500 errors randomly in production but I can't reproduce it locally. How should I approach this?",
+      "expected_output": "A structured debugging approach that starts with log analysis before jumping to fixes, focuses on reproducing the issue reliably, and distinguishes between root cause vs symptoms",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need to add a notifications feature to my Django app. Users should get notified when someone comments on their post. Where do I start?",
+      "expected_output": "A planning-first response that explores the codebase/stack first, defines the architecture (model, signal/async task, delivery channel), and lays out an ordered implementation plan before writing any code",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I have a React component that's 400 lines long, handles API calls, manages form state, and renders the UI. My team is complaining it's impossible to test. How do I fix this?",
+      "expected_output": "Advice that follows React conventions — separating concerns into custom hooks (data fetching, form state), smaller presentational components, and keeping the parent as a thin coordinator — with a step-by-step refactor plan",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "id": "django-eval-01",
+    "description": "Full REST API for Product model with filtering, pagination, owner-only permissions",
+    "prompt": "Dans mon projet Django (architecture Cookiecutter), crée une API REST complète pour le modèle Product avec les champs name, slug, price (Decimal), category (FK), is_active, owner (FK User). Je veux : filtrage par category et is_active, recherche par name, pagination 20 items, permission IsOwnerOrReadOnly, tests pytest couvrant list/create/update/delete et les cas d'accès refusé.",
+    "tags": ["api", "crud", "permissions", "tests", "cookiecutter"],
+    "expected_outputs": {
+      "files": [
+        "products/models.py",
+        "products/serializers.py",
+        "products/views.py",
+        "products/urls.py",
+        "products/permissions.py",
+        "tests/api/test_products.py"
+      ],
+      "behaviors": [
+        "ViewSet with ModelViewSet",
+        "select_related in queryset",
+        "get_serializer_class for list vs detail",
+        "IsOwnerOrReadOnly permission class",
+        "DjangoFilterBackend + SearchFilter",
+        "pytest fixtures with force_authenticate"
+      ]
+    }
+  },
+  {
+    "id": "django-eval-02",
+    "description": "Diagnose and fix N+1 queries in a view loading users with their posts",
+    "prompt": "Voici ma vue : `class UserListView(generics.ListAPIView): queryset = User.objects.all()`. Elle affiche chaque user avec ses derniers posts (User a une FK inversée `posts`). Django Debug Toolbar me montre 51 requêtes pour 50 users. Diagnostique et corrige le problème N+1 sans changer l'output de l'API.",
+    "tags": ["performance", "n+1", "optimization", "prefetch_related"],
+    "expected_outputs": {
+      "behaviors": [
+        "Identifies N+1 via prefetch_related or select_related",
+        "Rewrites queryset with Prefetch() if filtering needed",
+        "Explains why from 51 to 2 queries",
+        "Optionally suggests annotations for counts"
+      ]
+    }
+  },
+  {
+    "id": "django-eval-03",
+    "description": "Integrate a scikit-learn model for async price prediction via Celery",
+    "prompt": "J'ai un modèle scikit-learn `models/price_predictor.pkl` entraîné sur [weight, size, category_id]. Je veux l'intégrer dans mon API Django REST existante : endpoint POST /api/v1/products/{id}/predict/ qui lance la prédiction en Celery async et stocke le résultat dans product.predicted_price. Cache Redis 5 minutes. Tests inclus.",
+    "tags": ["ml", "celery", "redis", "async", "integration"],
+    "expected_outputs": {
+      "files": [
+        "products/services/ml_service.py",
+        "products/tasks.py",
+        "products/views.py (action)",
+        "tests/test_ml.py"
+      ],
+      "behaviors": [
+        "Singleton MLService with lazy model loading",
+        "Celery task with retry logic",
+        "Redis cache with invalidation",
+        "APIView or @action returning task_id",
+        "Mock model in tests"
+      ]
+    }
+  }
+]

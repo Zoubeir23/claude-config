@@ -1,0 +1,23 @@
+{
+  "skill_name": "readme-docx",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Crée une documentation complète pour mon API REST Django. Le projet s'appelle 'SamaShop' — c'est une API e-commerce avec gestion des produits, commandes, et paiements. Stack: Django 4.2, DRF, PostgreSQL, Redis pour le cache, JWT pour l'auth, Docker pour le déploiement. Je veux le README.md avec badges + tous les .docx dans une structure docs/.",
+      "expected_output": "README.md avec badges shields.io pour Django/DRF/PostgreSQL/Redis/Docker/JWT + structure docs/ avec 1-GETTING-STARTED (3 docx), 2-ARCHITECTURE (2-3 docx), 4-API-REFERENCE (2-3 docx), 5-DATABASE (1-2 docx), 6-DEPLOYMENT (2 docx), 7-DEVELOPMENT (1-2 docx), 8-TROUBLESHOOTING (1 docx) + TABLE-OF-CONTENTS.md + generate_docs.py script",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have a SpringBoot microservice called 'PaymentService' — it handles payment processing with Stripe integration. Java 17, Spring Boot 3.1, Spring Security with JWT, PostgreSQL, Flyway migrations, Maven, deployed on AWS. Generate professional documentation: README + docs folder with Word files.",
+      "expected_output": "README.md with Java/SpringBoot/Spring Security/PostgreSQL/Flyway/AWS badges + docs/ folder with appropriate sections for a microservice: getting started, architecture (with API reference and auth), deployment to AWS, developer setup. All .docx files generated via Python script.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Mon projet React s'appelle 'DashboardPro' — c'est un tableau de bord analytics pour les PME. React 18, TypeScript, Tailwind CSS, Recharts pour les graphiques, React Query pour les appels API, Vite comme bundler, déployé sur Vercel. Fais-moi un README propre avec badges et une structure docs/ adaptée pour un frontend.",
+      "expected_output": "README.md avec badges React/TypeScript/Tailwind/Vercel + section Tech Stack bien organisée + docs/ adapté frontend: Getting Started (installation, config Vite, quick start), Architecture (components, state management), Features (par feature du dashboard), Deployment (build Vite, Vercel config), Development (conventions, testing). Pas de section Database/API-Reference car c'est un frontend.",
+      "files": []
+    }
+  ]
+}

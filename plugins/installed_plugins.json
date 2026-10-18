@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "plugins": {
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/zoubeir/.claude/plugins/cache/claude-plugins-official/frontend-design/ea10b213686c",
+        "version": "ea10b213686c",
+        "installedAt": "2026-03-06T13:29:08.769Z",
+        "lastUpdated": "2026-10-18T20:07:19.021Z",
+        "gitCommitSha": "ea10b213686c90bb1984b2016937310e05336cf3"
+      }
+    ],
+    "skill-creator@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/zoubeir/.claude/plugins/cache/claude-plugins-official/skill-creator/ea10b213686c",
+        "version": "ea10b213686c",
+        "installedAt": "2026-03-06T13:29:09.173Z",
+        "lastUpdated": "2026-10-18T20:07:19.024Z",
+        "gitCommitSha": "ea10b213686c90bb1984b2016937310e05336cf3"
+      }
+    ],
+    "sentry@sentry-plugin-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/zoubeir/.claude/plugins/cache/sentry-plugin-marketplace/sentry/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-05-23T20:00:42.570Z",
+        "lastUpdated": "2026-05-23T20:00:42.570Z",
+        "gitCommitSha": "ed0875684192bb8a050297a896657ff9db1ffdf5"
+      }
+    ],
+    "vercel@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/zoubeir/.claude/plugins/cache/claude-plugins-official/vercel/0.50.0",
+        "version": "0.50.0",
+        "installedAt": "2026-05-31T20:36:43.940Z",
+        "lastUpdated": "2026-09-30T10:36:59.351Z",
+        "gitCommitSha": "882e66c2698689324c341b7bb8fd8beb92c27bf6"
+      }
+    ]
+  }
+}
