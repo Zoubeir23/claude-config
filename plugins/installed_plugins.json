@@ -40,6 +40,16 @@
         "lastUpdated": "2026-09-30T10:36:59.351Z",
         "gitCommitSha": "882e66c2698689324c341b7bb8fd8beb92c27bf6"
       }
+    ],
+    "claude-seo@agricidaniel-claude-seo": [
+      {
+        "scope": "user",
+        "installPath": "/Users/zoubeir/.claude/plugins/cache/agricidaniel-claude-seo/claude-seo/2.4.2",
+        "version": "2.4.2",
+        "installedAt": "2026-10-19T03:11:54.462Z",
+        "lastUpdated": "2026-10-19T03:11:54.462Z",
+        "gitCommitSha": "4b99de2f7de7e7d5247042e5fb5b4ea9368ef734"
+      }
     ]
   }
 }

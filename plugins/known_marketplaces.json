@@ -5,7 +5,7 @@
       "repo": "anthropics/claude-plugins-official"
     },
     "installLocation": "/Users/zoubeir/.claude/plugins/marketplaces/claude-plugins-official",
-    "lastUpdated": "2026-10-18T20:07:18.993Z"
+    "lastUpdated": "2026-10-19T03:46:09.507Z"
   },
   "sentry-plugin-marketplace": {
     "source": {
@@ -14,5 +14,13 @@
     },
     "installLocation": "/Users/zoubeir/.claude/plugins/marketplaces/sentry-plugin-marketplace",
     "lastUpdated": "2026-05-31T20:37:36.321Z"
+  },
+  "agricidaniel-claude-seo": {
+    "source": {
+      "source": "github",
+      "repo": "AgriciDaniel/claude-seo"
+    },
+    "installLocation": "/Users/zoubeir/.claude/plugins/marketplaces/agricidaniel-claude-seo",
+    "lastUpdated": "2026-10-19T03:11:53.578Z"
   }
 }
