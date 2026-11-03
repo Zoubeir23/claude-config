@@ -52,7 +52,7 @@ Contrôle final : `grep -li chatseo ~/.claude/agents/seo-*.md` ne doit rien renv
 Réplique la configuration (agents, skills, MCP gsc) vers Antigravity :
 
 ```bash
-bun ~/.claude/scripts/antigravity-sync/sync_claude_to_antigravity.ts
+cd ~/.claude/scripts && bun run antigravity-sync
 agy mcp list    # gsc doit apparaître "enabled"
 ```
 
