@@ -4,23 +4,15 @@
       "source": "github",
       "repo": "anthropics/claude-plugins-official"
     },
-    "installLocation": "/Users/zoubeir/.claude/plugins/marketplaces/claude-plugins-official",
-    "lastUpdated": "2026-10-19T03:46:09.507Z"
-  },
-  "sentry-plugin-marketplace": {
-    "source": {
-      "source": "github",
-      "repo": "getsentry/sentry-for-claude"
-    },
-    "installLocation": "/Users/zoubeir/.claude/plugins/marketplaces/sentry-plugin-marketplace",
-    "lastUpdated": "2026-05-31T20:37:36.321Z"
+    "installLocation": "/Users/zemod/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-10-21T13:16:59.655Z"
   },
   "agricidaniel-claude-seo": {
     "source": {
       "source": "github",
       "repo": "AgriciDaniel/claude-seo"
     },
-    "installLocation": "/Users/zoubeir/.claude/plugins/marketplaces/agricidaniel-claude-seo",
-    "lastUpdated": "2026-10-19T03:11:53.578Z"
+    "installLocation": "/Users/zemod/.claude/plugins/marketplaces/agricidaniel-claude-seo",
+    "lastUpdated": "2026-10-19T20:36:59.850Z"
   }
 }
