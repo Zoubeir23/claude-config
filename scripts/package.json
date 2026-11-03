@@ -2,7 +2,7 @@
 	"name": "scripts",
 	"type": "module",
 	"scripts": {
-		"test": "bun test auto-rename-session claude-code-ai statusline command-validator antigravity-sync",
+		"test": "bun test auto-rename-session claude-code-ai statusline command-validator antigravity-sync mesh",
 		"auto-rename:start": "bun auto-rename-session/src/index.ts",
 		"auto-rename:rename-all": "bun auto-rename-session/src/rename-all.ts",
 		"auto-rename:test": "bun test auto-rename-session",
@@ -22,7 +22,9 @@
 		"lint": "biome check --write .",
 		"format": "biome format --write .",
 		"antigravity-sync": "bun antigravity-sync/src/cli.ts",
-		"antigravity-sync:test": "bun test antigravity-sync"
+		"antigravity-sync:test": "bun test antigravity-sync",
+		"mesh:run": "bun mesh/src/cli.ts",
+		"mesh:test": "bun test mesh"
 	},
 	"dependencies": {
 		"@ai-sdk/anthropic": "^3.0.6",
