@@ -17,6 +17,7 @@ function buildResult(request: RunRequest, startedAt: number, fields: Partial<Run
 		durationMilliseconds: Date.now() - startedAt,
 		conversationId: null,
 		totalTokens: null,
+		deniedActions: [],
 		logFile: null,
 		...fields,
 	};
@@ -57,15 +58,38 @@ async function spawnAgy(agyPath: string, request: RunRequest, startedAt: number)
 	]);
 	clearTimeout(hardKillTimer);
 	const parsedOutput = parseAntigravityOutput(standardOutput);
-	const succeeded = exitCode === 0 && parsedOutput?.status === "SUCCESS";
+	const verdict = evaluateAntigravityOutput(exitCode, parsedOutput, standardError);
 	return buildResult(request, startedAt, {
-		status: timedOut ? "timeout" : succeeded ? "success" : "error",
+		status: timedOut ? "timeout" : verdict.succeeded ? "success" : "error",
 		response: parsedOutput?.response ?? standardOutput.trim(),
-		errorMessage: succeeded ? null : standardError.trim() || parsedOutput?.status || "agy returned no result",
+		errorMessage: verdict.errorMessage,
 		exitCode,
 		conversationId: parsedOutput?.conversation_id ?? null,
 		totalTokens: parsedOutput?.usage?.total_tokens ?? null,
+		deniedActions: verdict.deniedActions,
 	});
+}
+
+export function evaluateAntigravityOutput(
+	exitCode: number,
+	parsedOutput: AntigravityJsonOutput | null,
+	standardError: string,
+): { succeeded: boolean; errorMessage: string | null; deniedActions: string[] } {
+	const deniedActions = (parsedOutput?.denied_actions ?? []).map((denied) => denied.action ?? denied.display_name ?? "unknown");
+	if (deniedActions.length > 0) {
+		return {
+			succeeded: false,
+			deniedActions,
+			errorMessage: `agy was denied: ${deniedActions.join(", ")}. Headless mode cannot prompt; add an allow rule (see ORCHESTRATION_COMMAND_ALLOWLIST) or run the step yourself.`,
+		};
+	}
+	if (exitCode !== 0 || parsedOutput?.status !== "SUCCESS") {
+		return { succeeded: false, deniedActions, errorMessage: standardError.trim() || parsedOutput?.status || "agy returned no result" };
+	}
+	if (!parsedOutput.response?.trim()) {
+		return { succeeded: false, deniedActions, errorMessage: "agy reported success but produced an empty response" };
+	}
+	return { succeeded: true, deniedActions, errorMessage: null };
 }
 
 export async function runAgy(request: RunRequest): Promise<RunResult> {
