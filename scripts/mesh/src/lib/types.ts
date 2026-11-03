@@ -21,13 +21,21 @@ export interface RunResult {
 	readonly durationMilliseconds: number;
 	readonly conversationId: string | null;
 	readonly totalTokens: number | null;
+	readonly deniedActions: readonly string[];
 	readonly logFile: string | null;
 }
 
-// Shape of `agy -p ... --output-format json`.
+export interface PermissionRules {
+	readonly allow: readonly string[];
+	readonly deny: readonly string[];
+}
+
+// Shape of `agy -p ... --output-format json`. Headless agy reports SUCCESS even when it was denied
+// a permission it needed; denied_actions is the only signal.
 export interface AntigravityJsonOutput {
 	conversation_id?: string;
 	status?: string;
 	response?: string;
 	usage?: { total_tokens?: number };
+	denied_actions?: Array<{ action?: string; display_name?: string }>;
 }
