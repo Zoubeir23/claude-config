@@ -1,12 +1,11 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
-import type { MeshMode, RunRequest } from "./types";
+import type { MeshMode, PermissionRules, RunRequest } from "./types";
 
 const DEFAULT_AGY_PATH = join(homedir(), ".local/bin/agy");
-
-// Review must never touch files: enforced by a session-only permission override, not just by the prompt.
-const READ_ONLY_SETTINGS = JSON.stringify({ permissions: { deny: ["write_file(*)"] } });
+const AGY_SETTINGS_FILE = join(homedir(), ".gemini/antigravity-cli/settings.json");
+const NO_PERMISSIONS: PermissionRules = { allow: [], deny: [] };
 
 const MODE_INSTRUCTIONS: Readonly<Record<MeshMode, string>> = {
 	review: [
@@ -37,7 +36,33 @@ export function buildPrompt(mode: MeshMode, taskPrompt: string): string {
 	return `${MODE_INSTRUCTIONS[mode]}\n\n--- TASK ---\n${taskPrompt}`;
 }
 
-export function buildAgyArguments(agyPath: string, request: RunRequest): string[] {
+export function readPersistedPermissions(settingsFile = AGY_SETTINGS_FILE): PermissionRules {
+	if (!existsSync(settingsFile)) {
+		return NO_PERMISSIONS;
+	}
+	try {
+		const permissions = JSON.parse(readFileSync(settingsFile, "utf8")).permissions ?? {};
+		return { allow: permissions.allow ?? [], deny: permissions.deny ?? [] };
+	} catch (error) {
+		console.error(`mesh: ignoring unreadable ${settingsFile}: ${(error as Error).message}`);
+		return NO_PERMISSIONS;
+	}
+}
+
+// A "permissions" key passed via --settings replaces the persisted one, so the persisted rules are
+// carried over. Headless agy denies reads outside trusted workspaces, so the working directory is
+// granted explicitly. Review must never touch files: enforced here, not just by the prompt.
+export function buildSessionSettings(request: RunRequest, persistedPermissions: PermissionRules): string {
+	const allow = [...new Set([...persistedPermissions.allow, `read_file(${request.workingDirectory})`])];
+	const deny = [...new Set([...persistedPermissions.deny, ...(request.mode === "review" ? ["write_file(*)"] : [])])];
+	return JSON.stringify({ permissions: { allow, deny } });
+}
+
+export function buildAgyArguments(
+	agyPath: string,
+	request: RunRequest,
+	persistedPermissions: PermissionRules = readPersistedPermissions(),
+): string[] {
 	return [
 		agyPath,
 		"--print",
@@ -48,7 +73,8 @@ export function buildAgyArguments(agyPath: string, request: RunRequest): string[
 		`${request.timeoutSeconds}s`,
 		"--add-dir",
 		request.workingDirectory,
+		"--settings",
+		buildSessionSettings(request, persistedPermissions),
 		...(request.model ? ["--model", request.model] : []),
-		...(request.mode === "review" ? ["--settings", READ_ONLY_SETTINGS] : []),
 	];
 }
