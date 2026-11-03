@@ -12,6 +12,16 @@ cp ~/.claude/settings.example.json ~/.claude/settings.json   # then re-add proje
 
 Then re-authenticate MCP servers / plugins (`claude`, `/mcp`, `/plugin`).
 
+## Antigravity CLI and orchestration
+
+```bash
+cd ~/.claude/scripts && bun run antigravity-sync   # mirror rules, skills, agents, MCP, hooks to agy
+```
+
+The `orchestrator` skill (explicit trigger only) delegates review, execution or parallel subtasks to
+`agy` through `bin/antigravity-runner`. See [scripts/antigravity-sync](scripts/antigravity-sync/README.md)
+and [scripts/mesh](scripts/mesh/README.md).
+
 ## Not included (on purpose)
 
 Credentials (`~/.claude.json`, `.credentials.json`), `settings.json` (project-specific data),
