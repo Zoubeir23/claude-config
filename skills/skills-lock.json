@@ -12,6 +12,18 @@
       "sourceType": "github",
       "skillPath": "skills/make-interfaces-feel-better/SKILL.md",
       "computedHash": "54b6e221bbe4e2d1a8461c3f9ecabe69daf891f964e9ee5e699c323daa018f2e"
+    },
+    "neon": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/neon/SKILL.md",
+      "computedHash": "1be07bf84ddf85b14f1f26a4d782d1374c480b378f1716a155d4ac3d31389ca2"
+    },
+    "neon-postgres": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/neon-postgres/SKILL.md",
+      "computedHash": "0d936096676b18674d47828a87b21fcabf37cf0d7e3ed002e46e169eb7e0a7da"
     }
   }
 }
