@@ -80,6 +80,7 @@ describe("writeExecutionLog", () => {
 		durationMilliseconds: 5,
 		conversationId: "abc",
 		totalTokens: 1,
+		deniedActions: [],
 		logFile: null,
 	};
 
