@@ -4,50 +4,40 @@
     "frontend-design@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/zoubeir/.claude/plugins/cache/claude-plugins-official/frontend-design/ea10b213686c",
-        "version": "ea10b213686c",
-        "installedAt": "2026-03-06T13:29:08.769Z",
-        "lastUpdated": "2026-10-18T20:07:19.021Z",
-        "gitCommitSha": "ea10b213686c90bb1984b2016937310e05336cf3"
+        "installPath": "/Users/zemod/.claude/plugins/cache/claude-plugins-official/frontend-design/d1adba47161a",
+        "version": "d1adba47161a",
+        "installedAt": "2026-10-19T20:37:00.576Z",
+        "lastUpdated": "2026-10-21T13:16:59.711Z",
+        "gitCommitSha": "d1adba47161a271799de7b548225d929310046bd"
       }
     ],
     "skill-creator@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/zoubeir/.claude/plugins/cache/claude-plugins-official/skill-creator/ea10b213686c",
-        "version": "ea10b213686c",
-        "installedAt": "2026-03-06T13:29:09.173Z",
-        "lastUpdated": "2026-10-18T20:07:19.024Z",
-        "gitCommitSha": "ea10b213686c90bb1984b2016937310e05336cf3"
-      }
-    ],
-    "sentry@sentry-plugin-marketplace": [
-      {
-        "scope": "user",
-        "installPath": "/Users/zoubeir/.claude/plugins/cache/sentry-plugin-marketplace/sentry/1.0.0",
-        "version": "1.0.0",
-        "installedAt": "2026-05-23T20:00:42.570Z",
-        "lastUpdated": "2026-05-23T20:00:42.570Z",
-        "gitCommitSha": "ed0875684192bb8a050297a896657ff9db1ffdf5"
+        "installPath": "/Users/zemod/.claude/plugins/cache/claude-plugins-official/skill-creator/d1adba47161a",
+        "version": "d1adba47161a",
+        "installedAt": "2026-10-19T20:37:01.324Z",
+        "lastUpdated": "2026-10-21T13:16:59.712Z",
+        "gitCommitSha": "d1adba47161a271799de7b548225d929310046bd"
       }
     ],
     "vercel@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/zoubeir/.claude/plugins/cache/claude-plugins-official/vercel/0.50.0",
+        "installPath": "/Users/zemod/.claude/plugins/cache/claude-plugins-official/vercel/0.50.0",
         "version": "0.50.0",
-        "installedAt": "2026-05-31T20:36:43.940Z",
-        "lastUpdated": "2026-09-30T10:36:59.351Z",
+        "installedAt": "2026-10-19T20:37:06.550Z",
+        "lastUpdated": "2026-10-19T20:37:06.550Z",
         "gitCommitSha": "882e66c2698689324c341b7bb8fd8beb92c27bf6"
       }
     ],
     "claude-seo@agricidaniel-claude-seo": [
       {
         "scope": "user",
-        "installPath": "/Users/zoubeir/.claude/plugins/cache/agricidaniel-claude-seo/claude-seo/2.4.2",
+        "installPath": "/Users/zemod/.claude/plugins/cache/agricidaniel-claude-seo/claude-seo/2.4.2",
         "version": "2.4.2",
-        "installedAt": "2026-10-19T03:11:54.462Z",
-        "lastUpdated": "2026-10-19T03:11:54.462Z",
+        "installedAt": "2026-10-19T20:37:08.008Z",
+        "lastUpdated": "2026-10-19T20:37:08.008Z",
         "gitCommitSha": "4b99de2f7de7e7d5247042e5fb5b4ea9368ef734"
       }
     ]
