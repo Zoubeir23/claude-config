@@ -18,7 +18,7 @@ interface AgentConversionReport {
 	readonly droppedTools: readonly string[];
 }
 
-function parseClaudeToolList(rawTools: unknown): readonly string[] | null {
+export function parseClaudeToolList(rawTools: unknown): readonly string[] | null {
 	if (Array.isArray(rawTools)) {
 		return rawTools.map(String);
 	}
@@ -28,7 +28,7 @@ function parseClaudeToolList(rawTools: unknown): readonly string[] | null {
 	return null;
 }
 
-function mapTools(claudeTools: readonly string[] | null): { tools: readonly string[]; droppedTools: readonly string[] } {
+export function mapTools(claudeTools: readonly string[] | null): { tools: readonly string[]; droppedTools: readonly string[] } {
 	if (claudeTools === null) {
 		return { tools: ALL_ANTIGRAVITY_TOOLS, droppedTools: [] };
 	}
