@@ -50,7 +50,8 @@ describe("agy command", () => {
 
 	it("keeps persisted rules and grants reads on the working directory", () => {
 		const permissions = sessionPermissions({ ...baseRequest, mode: "execute" });
-		expect(permissions.allow).toEqual(["command(git status)", "read_file(/tmp/project)"]);
+		expect(permissions.allow).toEqual(["command(git status)", "read_file(/tmp/project)", "write_file(/tmp/project)"]);
+		expect(sessionPermissions(baseRequest).allow).not.toContain("write_file(/tmp/project)");
 		expect(permissions.deny).toEqual(["command(git push)"]);
 	});
 
@@ -69,8 +70,9 @@ describe("agy command", () => {
 	});
 
 	it("prefixes the task with mode instructions", () => {
-		expect(buildPrompt("review", "Check auth")).toContain("Do NOT modify any file");
-		expect(buildPrompt("worker", "Write docs")).toEndWith("--- TASK ---\nWrite docs");
+		expect(buildPrompt("review", "Check auth", "/tmp/project")).toContain("Do NOT modify any file");
+		expect(buildPrompt("review", "Check auth", "/tmp/project")).toContain("Working directory (absolute): /tmp/project");
+		expect(buildPrompt("worker", "Write docs", "/tmp/project")).toEndWith("--- TASK ---\nWrite docs");
 	});
 });
 

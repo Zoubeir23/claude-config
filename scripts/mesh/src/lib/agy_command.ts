@@ -32,8 +32,18 @@ export function resolveAgyPath(): string | null {
 	return existsSync(DEFAULT_AGY_PATH) ? DEFAULT_AGY_PATH : null;
 }
 
-export function buildPrompt(mode: MeshMode, taskPrompt: string): string {
-	return `${MODE_INSTRUCTIONS[mode]}\n\n--- TASK ---\n${taskPrompt}`;
+// Headless agy aborts the whole turn on the first denied shell command (e.g. `find` to locate a file),
+// so reading must go through built-in tools, which only need the read_file grant.
+function buildEnvironmentInstructions(workingDirectory: string): string {
+	return [
+		`Working directory (absolute): ${workingDirectory}`,
+		"Read and search files ONLY with your built-in tools (view_file, list_dir, find_by_name, grep_search), never with shell commands.",
+		"Shell commands are limited to an allowlist (git status/diff/log, test runners, linters, builds); anything else is denied and ends your turn.",
+	].join("\n");
+}
+
+export function buildPrompt(mode: MeshMode, taskPrompt: string, workingDirectory: string): string {
+	return `${MODE_INSTRUCTIONS[mode]}\n\n${buildEnvironmentInstructions(workingDirectory)}\n\n--- TASK ---\n${taskPrompt}`;
 }
 
 export function readPersistedPermissions(settingsFile = AGY_SETTINGS_FILE): PermissionRules {
@@ -53,7 +63,11 @@ export function readPersistedPermissions(settingsFile = AGY_SETTINGS_FILE): Perm
 // carried over. Headless agy denies reads outside trusted workspaces, so the working directory is
 // granted explicitly. Review must never touch files: enforced here, not just by the prompt.
 export function buildSessionSettings(request: RunRequest, persistedPermissions: PermissionRules): string {
-	const allow = [...new Set([...persistedPermissions.allow, `read_file(${request.workingDirectory})`])];
+	const workingDirectoryGrants =
+		request.mode === "review"
+			? [`read_file(${request.workingDirectory})`]
+			: [`read_file(${request.workingDirectory})`, `write_file(${request.workingDirectory})`];
+	const allow = [...new Set([...persistedPermissions.allow, ...workingDirectoryGrants])];
 	const deny = [...new Set([...persistedPermissions.deny, ...(request.mode === "review" ? ["write_file(*)"] : [])])];
 	return JSON.stringify({ permissions: { allow, deny } });
 }
@@ -66,7 +80,7 @@ export function buildAgyArguments(
 	return [
 		agyPath,
 		"--print",
-		buildPrompt(request.mode, request.prompt),
+		buildPrompt(request.mode, request.prompt, request.workingDirectory),
 		"--output-format",
 		"json",
 		"--print-timeout",
