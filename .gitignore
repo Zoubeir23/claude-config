@@ -37,3 +37,7 @@ node_modules/
 /skills/synced/
 /skills/suggest-designs/
 /agent-memory/
+
+# Orchestrator: versioned wrapper, never the execution logs
+!/bin/
+/mesh/
