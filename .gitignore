@@ -37,3 +37,6 @@ node_modules/
 /skills/synced/
 /skills/suggest-designs/
 /agent-memory/
+
+# Google Search Console service account key
+mcp-gsc/
