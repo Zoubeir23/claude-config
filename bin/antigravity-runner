@@ -1,0 +1,4 @@
+#!/bin/sh
+# Delegates a review, execution or parallel subtask from Claude Code to Antigravity CLI (agy).
+# Prints one JSON result on stdout. Run with no arguments for usage.
+exec bun "$HOME/.claude/scripts/mesh/src/cli.ts" "$@"

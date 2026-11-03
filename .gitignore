@@ -40,3 +40,7 @@ node_modules/
 
 # Google Search Console service account key
 mcp-gsc/
+
+# Orchestrator: versioned wrapper, never the execution logs
+!/bin/
+/mesh/
