@@ -2,7 +2,7 @@ import { describe, expect, it } from "bun:test";
 import { ALL_ANTIGRAVITY_TOOLS, EXCLUDED_SKILL_NAME_PATTERNS } from "../lib/constants";
 import { categorizeAgent, renderAgentMap } from "../lib/sync_agent_map";
 import { mapTools, parseClaudeToolList } from "../lib/sync_agents";
-import { convertClaudePermissionRule } from "../lib/sync_permissions";
+import { convertClaudePermissionRule, ORCHESTRATION_COMMAND_ALLOWLIST } from "../lib/sync_permissions";
 import { shortenDescription } from "../lib/sync_skills";
 
 describe("shortenDescription", () => {
@@ -86,5 +86,17 @@ describe("agent map", () => {
 			{ claudeName: "vercel:ai-architect", antigravityName: "vercel-ai-architect", role: "A | B", model: "inherit" },
 		]);
 		expect(rendered).toContain("| `vercel:ai-architect` | `vercel-ai-architect` | inherit | A \\| B |");
+	});
+});
+
+describe("orchestration allowlist", () => {
+	it("lets agy verify pnpm projects with short and run forms", () => {
+		for (const command of ["pnpm lint", "pnpm typecheck", "pnpm test", "pnpm build", "pnpm run lint", "pnpm run typecheck", "pnpm run build"]) {
+			expect(ORCHESTRATION_COMMAND_ALLOWLIST).toContain(command);
+		}
+	});
+
+	it("contains no duplicates", () => {
+		expect(new Set(ORCHESTRATION_COMMAND_ALLOWLIST).size).toBe(ORCHESTRATION_COMMAND_ALLOWLIST.length);
 	});
 });
