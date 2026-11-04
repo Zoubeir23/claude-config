@@ -20,15 +20,16 @@ git checkout -b Feature/059-description  # pour une feature
 **Erreur à ne jamais reproduire** : coder directement sur une branche existante
 (même si elle semble liée à la tâche), sans pull + nouvelle branche depuis main.
 
-## Contributions GitHub — Minimum 30 commits par tâche
+## Contributions GitHub — Viser 30 commits par tâche, si le travail le permet
 
-Chaque tâche (feature ou fix) doit produire **au minimum 30 commits atomiques** sur sa branche avant la PR :
+Une tâche (feature ou fix) vise **jusqu'à 30 commits atomiques** sur sa branche avant la PR, **quand sa taille réelle le permet** :
 
 - **1 changement logique = 1 commit** : commiter au fil du travail, pas en bloc à la fin.
 - Exemples de granularité : création d'un fichier, ajout d'une fonction, ajout d'un test, correction d'un edge case, refactor d'un nom, mise à jour d'une doc — chacun est un commit séparé.
 - Chaque commit doit compiler/tourner et respecter le format `<code>-titre-court`.
-- **Jamais de commits vides ou artificiels** (`--allow-empty`, changements de whitespace fabriqués) : le minimum s'atteint par découpage réel du travail, pas par remplissage.
-- Avant d'ouvrir la PR, vérifier le compte : `git rev-list --count main..HEAD`. Si < 30, découper davantage le travail restant.
+- **Le nombre suit le travail, pas l'inverse** : une petite modification qui ne donne que 2 ou 3 commits cohérents reste à 2 ou 3. 30 n'est pas obligatoire.
+- **Jamais de commits vides, artificiels ou inutiles** (`--allow-empty`, whitespace fabriqué, découpage absurde d'une même ligne) : chaque commit doit avoir un sens à lui seul.
+- Avant d'ouvrir la PR : `git rev-list --count main..HEAD`. Si une grosse tâche a moins de 30 commits, vérifier si des changements regroupés peuvent être séparés de façon cohérente. Sinon, garder le nombre tel quel.
 - Rappel : les commits ne comptent dans le graphe de contributions qu'une fois la PR mergée sur main.
 
 ## GitHub — Règles absolues
