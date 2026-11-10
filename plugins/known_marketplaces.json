@@ -14,5 +14,14 @@
     },
     "installLocation": "/Users/zemod/.claude/plugins/marketplaces/agricidaniel-claude-seo",
     "lastUpdated": "2026-10-19T20:36:59.850Z"
+  },
+  "supabase-community-supabase-plugin": {
+    "source": {
+      "source": "github",
+      "repo": "supabase-community/supabase-plugin"
+    },
+    "installLocation": "/Users/zemod/.claude/plugins/marketplaces/supabase-community-supabase-plugin",
+    "lastUpdated": "2026-11-10T00:27:22.347Z",
+    "autoUpdate": true
   }
 }
