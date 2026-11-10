@@ -40,6 +40,16 @@
         "lastUpdated": "2026-10-19T20:37:08.008Z",
         "gitCommitSha": "4b99de2f7de7e7d5247042e5fb5b4ea9368ef734"
       }
+    ],
+    "supabase@supabase-community-supabase-plugin": [
+      {
+        "scope": "user",
+        "installPath": "/Users/zemod/.claude/plugins/cache/supabase-community-supabase-plugin/supabase/016bf5b36670",
+        "version": "0.1.17",
+        "installedAt": "2026-11-10T00:27:22.391Z",
+        "lastUpdated": "2026-11-10T00:27:22.391Z",
+        "gitCommitSha": "016bf5b36670f7ad189ca90223513bd10406392d"
+      }
     ]
   }
 }
